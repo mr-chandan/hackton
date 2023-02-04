@@ -16,8 +16,15 @@ export default function Submit() {
     };
 
     const handleClose = () => {
+        console.log(fields)
         setOpen(false);
     };
+    const [fields,setfileds] = React.useState();
+
+    function handleChange(event){
+        const {name,value} = event.target;
+        setfileds(prevValue => ({...prevValue,[name]:value}))
+    }
 
     return (
         <div>
@@ -43,6 +50,8 @@ export default function Submit() {
                         type="email"
                         fullWidth
                         variant="outlined"
+                        onChange={handleChange}
+                        name="email"
                     />
                     <div className={Styles.in}>
                         <label for="img">Upload some image of the app : </label>
@@ -56,6 +65,8 @@ export default function Submit() {
                         type="text"
                         fullWidth
                         variant="outlined"
+                        onChange={handleChange}
+                        name='name'
                     />
                     <TextField
                         autoFocus
@@ -65,6 +76,8 @@ export default function Submit() {
                         type="text"
                         fullWidth
                         variant="outlined"
+                        onChange={handleChange}
+                        name='where you found'
                     />
                     <TextField
                         autoFocus
@@ -74,6 +87,8 @@ export default function Submit() {
                         type="text"
                         fullWidth
                         variant="outlined"
+                        onChange={handleChange}
+                        name='What is it related to'
                     />
                 </DialogContent>
                 <DialogActions>
