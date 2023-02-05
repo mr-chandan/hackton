@@ -10,4 +10,4 @@ const api = axios.create({
 });
 
 export const search = (data) => api.post('/apilink', data);
-export const store = (data) => api.post('/apilink', data);
+export const store = (data) => api.post('/apilink/store', data);

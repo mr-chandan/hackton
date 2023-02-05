@@ -11,9 +11,9 @@ function Input() {
         try {
             const { data } = await search({ url })
             if (data === false){
-              setmsg("This is safe application")
+              setmsg("This is safe application  ✨ ")
             }else{
-                setmsg("This is unsafe")
+                setmsg("This is unsafe ⚠️☠️")
             }
             console.log(data)
         } catch (error) {

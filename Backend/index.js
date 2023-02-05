@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors')
 const routers = require('./routes')
 const mysqlConnection = require('./database/Sqlconnect')
+var gplay = require('google-play-scraper');
 
 const corsOptio = {
     credentials: true,
@@ -15,4 +16,12 @@ app.use(routers)
 const port = 5000
 app.listen(port, () => {
     console.log(`Server running on ${port}!`)
+    // setInterval(() => {
+    //     gplay.search({
+    //         term: "loan apps",
+    //         num: 2,
+    //         country:"IN",
+    //         fullDetail :"true"
+    //     }).then(console.log, console.log);
+    // }, 10000);
 })

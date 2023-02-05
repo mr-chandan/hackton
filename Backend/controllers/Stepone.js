@@ -14,8 +14,11 @@ class Stepone {
     }
 
     async store(req, res) {
-        console.log(req.body)
+        quearylist += `CREATE TABLE ${storedata}_${formData}_languages ( id int NOT NULL auto_increment,languages varchar(50) NOT NULL unique,PRIMARY KEY (id));`
     }
 }
 
 module.exports = new Stepone();
+
+
+

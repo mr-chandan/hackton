@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Styles from "../Submit/Submit.module.css"
+import { store } from "../https/request";
 
 export default function Submit() {
     const [open, setOpen] = React.useState(false);
@@ -19,11 +20,21 @@ export default function Submit() {
         console.log(fields)
         setOpen(false);
     };
-    const [fields,setfileds] = React.useState();
+    const [fields, setfileds] = React.useState();
 
-    function handleChange(event){
-        const {name,value} = event.target;
-        setfileds(prevValue => ({...prevValue,[name]:value}))
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setfileds(prevValue => ({ ...prevValue, [name]: value }))
+    }
+
+    async function ck() {
+        try {
+            const { data } = await store(fields)
+            console.log(data)
+        } catch (error) {
+            console.error(error.message);
+        }
+        handleClose();
     }
 
     return (
@@ -37,11 +48,9 @@ export default function Submit() {
             </div>
 
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>App info </DialogTitle>
+                <DialogTitle> Enter the Details of the app </DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        Enter the Details of the app
-                    </DialogContentText>
+
                     <TextField
                         autoFocus
                         margin="dense"
@@ -66,7 +75,7 @@ export default function Submit() {
                         fullWidth
                         variant="outlined"
                         onChange={handleChange}
-                        name='name'
+                        name='nameofapp'
                     />
                     <TextField
                         autoFocus
@@ -77,7 +86,7 @@ export default function Submit() {
                         fullWidth
                         variant="outlined"
                         onChange={handleChange}
-                        name='where you found'
+                        name='whereufound'
                     />
                     <TextField
                         autoFocus
@@ -88,11 +97,23 @@ export default function Submit() {
                         fullWidth
                         variant="outlined"
                         onChange={handleChange}
-                        name='What is it related to'
+                        name='whatisitrealted'
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Is it related to scam"
+                        type="text"
+                        fullWidth
+                        variant="outlined"
+                        onChange={handleChange}
+                        name='scamrelated'
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Submit</Button>
+                    <Button onClick={handleClose}>Close</Button>
+                    <Button onClick={ck}>Submit</Button>
                 </DialogActions>
             </Dialog>
         </div>
