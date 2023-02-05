@@ -32,26 +32,26 @@ async function gg() {
         appId: play[0].appId,
         num: 2
     })
-    
+
 
     q.data.forEach((element) => {
         // console.log(element.text);
         openapi(element.text)
     });
 
-     async function openapi(g){
+    async function openapi(g) {
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `i have give u a text of some app reviews  based on the text given give me output in just two words good or bad based on the user experience on use the two words dont print extra words.The sentence is ${g}`,
             temperature: 2,
             max_tokens: 30,
         });
-        console.log(response.data)
-     }
-
-
-
-
+        console.log( response.data.choices[0].text)
+        txt =  response.data.choices[0].text
+        if (txt.includes("good")) {
+            console.log("good")
+        }
+    }
 
 
 }

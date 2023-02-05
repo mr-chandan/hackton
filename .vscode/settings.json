@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/db10be44-4028-4be8-b867-0f1cad231245/resourceGroups/abhayakg123-sandbox-RG/providers/Microsoft.Web/sites/hackton",
+    "appService.deploySubpath": "."
+}
